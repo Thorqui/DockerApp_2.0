@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Web con Docker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 Bienvenido a mi proyecto con Docker</h1>
+        <p>Esta página está ejecutándose dentro de un contenedor Nginx.</p>
+        <p>Creado por <strong>Aitor Quilez</strong></p>
+    </div>
+</body>
+<script>
+    async function obtenerSaludo() {
+        const resp = await fetch('/api/saludo');
+        const data = await resp.json();
+        document.getElementById('saludo').innerText = data.mensaje;
+    }
+</script>
+
+</html>
