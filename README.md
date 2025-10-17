@@ -80,11 +80,11 @@ Orquestación de múltiples servicios con Docker Compose.
 Integración de un frontend estático con un backend dinámico.
 
 
-👨‍💻 Autor
-Aitor (Thorqui)
+## 👨‍💻 Autor
+Aitor Quilez Herrero (Thorqui)
 🔗 GitHub - Thorqui
 
-💡 Notas Adicionales
+## 💡 Notas Adicionales
 
 - Asegúrate de tener Docker y Docker Compose instalados en tu sistema.
 - Puedes personalizar los puertos en el archivo docker-compose.yml si es necesario.
