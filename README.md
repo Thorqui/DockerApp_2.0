@@ -1,70 +1,86 @@
-# 🐳 DockerApp – Sitio Web Estático con Backend Flask
+# 🐳 DockerApp - Sitio Web Estático con Backend Flask
 
-Proyecto de ejemplo para mi portafolio: una aplicación web estática servida con **Nginx** en frontend y un **backend Flask** que expone una API, todo dentro de contenedores **Docker**.  
-Ideal para aprender a desplegar un proyecto completo con Docker Compose.
+Un proyecto de ejemplo para tu portafolio: una **aplicación web estática** servida con **Nginx** en el frontend y un **backend Flask** que expone una API, todo orquestado con **Docker Compose**.  
+Ideal para aprender a desplegar aplicaciones completas con contenedores.
 
----
 
-## 🚀 Tecnologías utilizadas
+## 📋 Descripción
 
-- **Frontend:** HTML5, CSS3, Nginx  
-- **Backend:** Python 3.10, Flask, Flask-CORS  
-- **Contenerización:** Docker, Docker Compose
+DockerApp combina un frontend estático (HTML5 y CSS3) servido por Nginx con un backend Flask que expone una API. Ambos componentes están contenerizados con Docker y orquestados mediante Docker Compose, facilitando el despliegue y la escalabilidad.
 
----
 
-## 🧩 Estructura del proyecto
+## 🛠️ Tecnologías Utilizadas
 
+| Componente       | Tecnologías                              |
+|------------------|------------------------------------------|
+| **Frontend**     | HTML5, CSS3, Nginx                       |
+| **Backend**      | Python 3.10, Flask, Flask-CORS           |
+| **Contenerización** | Docker, Docker Compose                 |
+
+
+## 📂 Estructura del Proyecto
+
+```plaintext
 DockerApp/
-│
 ├── backend/
-│ ├── app.py # Servidor Flask
-│ ├── requirements.txt # Dependencias de Python
-│ └── Dockerfile # Dockerfile backend
-│
+│   ├── app.py             # Servidor Flask
+│   ├── requirements.txt   # Dependencias de Python
+│   └── Dockerfile         # Configuración del backend
 ├── frontend/
-│ ├── index.html # Página principal
-│ ├── styles.css # Estilos
-│ └── Dockerfile # Dockerfile frontend (Nginx)
-│
-└── docker-compose.yml # Orquesta frontend y backend
+│   ├── index.html         # Página principal
+│   ├── styles.css         # Estilos CSS
+│   └── Dockerfile         # Configuración del frontend (Nginx)
+└── docker-compose.yml     # Orquestación de frontend y backend
+```
 
----
+## 🚀 Cómo Ejecutar el Proyecto
+  Sigue estos pasos para correr el proyecto localmente:
 
-## ⚙️ Cómo ejecutar el proyecto localmente
+1. **Clona el repositorio**
+  ```bash
+  git clone https://github.com/Thorqui/DockerApp.git
+  cd DockerApp
 
-1️⃣ **Clona este repositorio:**
-```bash
-git clone https://github.com/Thorqui/DockerApp.git
-cd DockerApp
-2️⃣ Construye la imagen Docker:
+3. **Construye y ejecuta los contenedores con Docker Compose**
+  ```bash
+  bashdocker-compose up --build
 
-bash
-Copiar código
-docker build -t dockerapp .
-3️⃣ Ejecuta el contenedor:
+4. **Accede al sitio**
+  Abre tu navegador y visita:
+  🌐 http://localhost:8080
+  La API estará disponible en:
+  🌐 http://localhost:5000 (o el puerto configurado en docker-compose.yml).
 
-bash
-Copiar código
-docker run -d -p 8080:80 --name web dockerapp
-4️⃣ Abre el sitio en el navegador:
-👉 http://localhost:8080
 
-🧱 Dockerfile utilizado
-dockerfile
-Copiar código
-FROM nginx:latest
-COPY . /usr/share/nginx/html
-Simple y eficiente: copia tus archivos HTML/CSS al contenedor Nginx y los sirve directamente.
+## 🧱 Dockerfiles
+**Frontend (Nginx)**
+  dockerfile
+  ```bash
+  FROM nginx:latest
+  COPY . /usr/share/nginx/html
+**Backend (Flask)**
+  dockerfile
+  ```bash
+  FROM python:3.10-slim
+  WORKDIR /app
+  COPY requirements.txt .
+  RUN pip install --no-cache-dir -r requirements.txt
+  COPY . .
+  EXPOSE 5000
+  CMD ["python", "app.py"]
 
-🧠 Objetivo del proyecto
-Este proyecto forma parte de mi portafolio como desarrollador, demostrando:
-
-Capacidad para crear y dockerizar aplicaciones web
-
-Comprensión del flujo build → run en Docker
+## 🧠 Objetivo del Proyecto
+Creación y contenerización de aplicaciones web con Docker.
+Orquestación de múltiples servicios con Docker Compose.
+Integración de un frontend estático con un backend dinámico.
 
 
 👨‍💻 Autor
 Aitor (Thorqui)
-🔗 GitHub – Thorqui
+🔗 GitHub - Thorqui
+
+💡 Notas Adicionales
+
+- Asegúrate de tener Docker y Docker Compose instalados en tu sistema.
+- Puedes personalizar los puertos en el archivo docker-compose.yml si es necesario.
+- Verifica que el puerto 8080 (frontend) y 5000 (backend) estén libres antes de ejecutar.
