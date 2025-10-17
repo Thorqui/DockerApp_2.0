@@ -40,10 +40,12 @@ DockerApp/
   ```bash
   git clone https://github.com/Thorqui/DockerApp.git
   cd DockerApp
+  ```
 
 3. **Construye y ejecuta los contenedores con Docker Compose**
   ```bash
   bashdocker-compose up --build
+ ```
 
 4. **Accede al sitio**
   Abre tu navegador y visita:
@@ -58,6 +60,8 @@ DockerApp/
   ```bash
   FROM nginx:latest
   COPY . /usr/share/nginx/html
+ ```
+
 **Backend (Flask)**
   dockerfile
   ```bash
@@ -68,6 +72,7 @@ DockerApp/
   COPY . .
   EXPOSE 5000
   CMD ["python", "app.py"]
+ ```
 
 ## 🧠 Objetivo del Proyecto
 Creación y contenerización de aplicaciones web con Docker.
